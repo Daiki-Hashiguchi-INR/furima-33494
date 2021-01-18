@@ -9,7 +9,7 @@ window.addEventListener('load', () => {
     console.log(addTaxDom);
 
     const profitNumber = document.getElementById("profit")
-    profitNumber.innerHTML = (Math.floor(inputValue - (inputValue * 0.1)));
+    profitNumber.innerHTML = (Math.round(inputValue - (inputValue * 0.1)));
       console.log(profitNumber);
 
   })
