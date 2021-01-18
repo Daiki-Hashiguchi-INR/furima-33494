@@ -12,7 +12,7 @@ RSpec.describe Item, type: :model do
       end
     end
 
-    context '出品作成できないとき'do
+    context '出品作成できないとき' do
       it '画像が空だと登録できない' do
         @item.image = nil
         @item.valid?
@@ -31,27 +31,27 @@ RSpec.describe Item, type: :model do
       it 'カテゴリーが空だと登録できない' do
         @item.category = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include "Category Select"
+        expect(@item.errors.full_messages).to include 'Category Select'
       end
       it '商品の状態が空だと登録できない' do
         @item.condition = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include "Condition Select"
+        expect(@item.errors.full_messages).to include 'Condition Select'
       end
       it '配送料の負担が空だと登録できない' do
         @item.post_type = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include "Post type Select"
+        expect(@item.errors.full_messages).to include 'Post type Select'
       end
       it '発送元の地域が空だと登録できない' do
         @item.prefecture = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include "Prefecture Select"
+        expect(@item.errors.full_messages).to include 'Prefecture Select'
       end
       it '発送までの日数が空だと登録できない' do
         @item.preparation_day = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include "Preparation day Select"
+        expect(@item.errors.full_messages).to include 'Preparation day Select'
       end
       it '価格が空だと登録できない' do
         @item.price = ''
@@ -61,12 +61,12 @@ RSpec.describe Item, type: :model do
       it '価格が半角数字以外だと登録できない' do
         @item.price = 'aaaaa'
         @item.valid?
-        expect(@item.errors.full_messages).to include "Price Half-width number"
+        expect(@item.errors.full_messages).to include 'Price Half-width number'
       end
       it '価格が範囲外だと登録できない' do
         @item.price = '200'
         @item.valid?
-        expect(@item.errors.full_messages).to include "Price Out of setting range"
+        expect(@item.errors.full_messages).to include 'Price Out of setting range'
       end
     end
   end
