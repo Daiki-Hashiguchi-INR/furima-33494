@@ -11,8 +11,9 @@ class Item < ApplicationRecord
 
   with_options presence: true do
     validates :image
-    validates :name
-    validates :explain
+    validates :price
+    validates :name,     length: { maximum:40 }
+    validates :explain,  length: { maximum:1000 }
   end
 
   validates :price, numericality: { only_interger: true, message: 'Half-width number' }
