@@ -3,13 +3,11 @@ require 'rails_helper'
 RSpec.describe OrderAddress, type: :model do
   before do
     @address = FactoryBot.build(:order_address)
-    @item = FactoryBot.build(:item)
-    @user = FactoryBot.build(:user)
   end
 
   describe "商品購入機能" do
     context "購入できる時" do
-      it "全ての項目を適切に記入すれば購入できる" do
+      it "全ての項目を適切に記入,tokenがあれば購入できる" do
         expect(@address).to be_valid
       end
       it "建物名だけ空欄でも購入できる" do
@@ -19,6 +17,11 @@ RSpec.describe OrderAddress, type: :model do
     end
 
     context "購入できない時" do
+      it "tokenが空だと購入できない" do
+        @address.token = nil
+        @address.valid?
+        expect(@address.errors.full_messages).to include("Token can't be blank")
+      end
       it "郵便番号が空だと購入できない" do
         @address.post_number = ""
         @address.valid?
@@ -48,6 +51,11 @@ RSpec.describe OrderAddress, type: :model do
         @address.phone_number = ""
         @address.valid?
         expect(@address.errors.full_messages).to include "Phone number can't be blank"
+      end
+      it "電話番号にハイフンがあると購入できない" do
+        @address.phone_number = "123-456-7890"
+        @address.valid?
+        expect(@address.errors.full_messages).to include "Phone number Half-width number"
       end
       it "電話番号が11けた以上だと購入できない" do
         @address.phone_number = "1234567890123"
