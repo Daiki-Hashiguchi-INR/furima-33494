@@ -1,7 +1,7 @@
 class OrderAddress
   include ActiveModel::Model
   attr_accessor :post_number, :city, :address,
-                :phone_number, :building, :prefecture_id, :order_id, :item_id, :user_id,
+                :phone_number, :building, :prefecture_id, :item_id, :user_id,
                 :token
 
   with_options presence: true do
@@ -10,7 +10,7 @@ class OrderAddress
     validates :address
     validates :phone_number, numericality: { only_interger: true, message: 'Half-width number' },
                              length: { minimum: 10, maximum: 11, message: 'Over number' }
-    validates :token, presence: true
+    validates :token
     validates :user_id
     validates :item_id
   end
