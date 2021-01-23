@@ -1,9 +1,7 @@
 FactoryBot.define do
   factory :order_address do
-    token { 'tok_abcdefghijk00000000000000000' }
 
-    user_id { 2 }
-    item_id { 2 }
+    token { 'tok_abcdefghijk00000000000000000' }
 
     post_number { '222-2222' }
     prefecture_id { 2 }
