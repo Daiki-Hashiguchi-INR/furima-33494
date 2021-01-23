@@ -9,7 +9,7 @@ class OrderAddress
     validates :city
     validates :address
     validates :phone_number, numericality: { only_interger: true, message: 'Half-width number' },
-                             length: { minimum: 10,maximum: 11, message: 'Over number' }
+                             length: { minimum: 10, maximum: 11, message: 'Over number' }
     validates :token, presence: true
     validates :user_id
     validates :item_id

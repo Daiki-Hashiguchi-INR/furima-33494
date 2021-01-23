@@ -1,6 +1,5 @@
 FactoryBot.define do
   factory :order_address do
-
     token { 'tok_abcdefghijk00000000000000000' }
 
     post_number { '222-2222' }
