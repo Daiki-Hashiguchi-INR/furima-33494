@@ -91,6 +91,11 @@ RSpec.describe OrderAddress, type: :model do
         @address.valid?
         expect(@address.errors.full_messages).to include 'Phone number Half-width number'
       end
+      it '電話番号が英数混合だと購入できない' do
+        @address.phone_number = '123abc4567'
+        @address.valid?
+        expect(@address.errors.full_messages).to include 'Phone number Half-width number'
+      end
     end
   end
 end
